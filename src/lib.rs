@@ -1,15 +1,16 @@
 #![no_std]
 
-use lora_phy::{RxMode, mod_params::{Bandwidth, ModulationParams, PacketParams, PacketStatus, RadioError, RadioMode, SpreadingFactor}, mod_traits::{IrqState, RadioKind}};
 use lr2021::{BusyAsync, BusyPin, Lr2021, lora::{ExitMode, HeaderType, Ldro, LoraBw, LoraCr, LoraModulationParams, LoraPacketParams, Sf}, radio::{PacketType, RampTime}, status::Intr, system::{ChipMode, DioNum}};
 use embedded_hal::digital::{OutputPin, InputPin};
 use embedded_hal_async::{digital::Wait, spi::SpiBus};
 use embassy_time::Duration;
 
+pub use lora_phy::{mod_traits::*, mod_params::*, RxMode};
+
 /// Wrapper around the Lr2021 Driver to implement the LoRaPhy traits
 /// This allows integration in lora-rs which provide a LoRaWAN stack implementation
 pub struct Lr2021LoraPhy<O, SPI, IRQ, M:BusyPin> {
-    driver: Lr2021<O,SPI,M>,
+    pub driver: Lr2021<O,SPI,M>,
     irq: IRQ,
     dio_irq: DioNum
 }
