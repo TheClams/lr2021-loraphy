@@ -7,12 +7,12 @@ description = "Implementation of lora-phy trait for LR2021 (allow integration in
 repository = "https://github.com/TheClams/lr2021-loraphy"
 
 [dependencies]
-embassy-time = "0.4.0"
-embedded-hal = "0.2.6"
+embassy-time = "0.5.0"
+embedded-hal = "1.0.0"
 embedded-hal-async = "1.0.0"
 lora-phy = "3.0.2-alpha"
-lr2021 = "0.11.0"
+lr2021 = "0.12.0"
 
 
 [patch.crates-io]
-lora-phy = { git = "https://github.com/TheClams/lora-rs.git", tag = "lora-phy-v3.0.2"}
+lora-phy = { git = "https://github.com/lora-rs/lora-rs"}
